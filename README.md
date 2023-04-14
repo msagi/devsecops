@@ -1,4 +1,5 @@
-# Docker image for DevSecOps pipelines 
+[![scan-container-for-vulnerabilities](https://github.com/msagi/devsecops-dockerimage/actions/workflows/container-scanning.yml/badge.svg)](https://github.com/msagi/devsecops-dockerimage/actions/workflows/container-scanning.yml)
+# Production ready Docker image for DevSecOps pipelines
 
 ## Release: 2023.4
 
