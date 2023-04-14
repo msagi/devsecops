@@ -6,7 +6,8 @@ build:
 	docker build -t ${docker_repo}/${image_name}:${image_version} .
 
 deploy:
-	docker push ${docker_repo}/${image_name}:${image_version}
+	docker tag ${docker_repo}/${image_name}:${image_version} ${docker_repo}/${image_name}:latest
+	docker push ${docker_repo}/${image_name}:latest
 
 run:
 	docker run --interactive --tty ${docker_repo}/${image_name}:${image_version} /bin/bash 

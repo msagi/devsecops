@@ -1,0 +1,12 @@
+name: scan-container-for-vulnerabilities
+run-name: ${{ github.actor }} is vulnerability scanning Container
+on:
+  schedule:
+    - cron: '0,15,30,45 5 * * *'
+jobs:
+  scan-for-container-vulnerabilty:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: crazy-max/ghaction-container-scan@v2
+        with:
+          image: msaginwm/devsecops-base:latest
