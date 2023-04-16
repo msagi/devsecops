@@ -27,4 +27,6 @@ apt-get install -y \
     docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
 # Verify that the installation is successful
-docker --version
+echo "[Docker]" >> /install/version.txt
+docker --version >> /install/version.txt
+echo "" >> /install/version.txt

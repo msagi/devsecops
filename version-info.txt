@@ -1,0 +1,26 @@
+[AWS CLI v2]
+aws-cli/2.11.13 Python/3.11.3 Linux/5.15.49-linuxkit exe/x86_64.ubuntu.23 prompt/off
+
+[Docker]
+Docker version 23.0.3, build 3e7cbfd
+
+[kubectl]
+clientVersion:
+  buildDate: "2023-04-14T13:21:19Z"
+  compiler: gc
+  gitCommit: 4c9411232e10168d7b050c49a1b59f6df9d7ea4b
+  gitTreeState: clean
+  gitVersion: v1.27.1
+  goVersion: go1.20.3
+  major: "1"
+  minor: "27"
+  platform: linux/amd64
+kustomizeVersion: v5.0.1
+
+
+[make]
+GNU Make 4.3
+
+[Python]
+Python 3.11.2
+

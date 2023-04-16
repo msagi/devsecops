@@ -4,19 +4,13 @@
 apt install -y \
     curl
 
-version=v1.26.3
-
 # create temp folder
 tempFolder=/tmp/install-kubectl
 mkdir ${tempFolder}
 cd ${tempFolder}
 
 # Check for latest stable version
-latestStableVersion=$(curl -L -s https://dl.k8s.io/release/stable.txt)
-
-if "${version}" -ne "${latestStableVersion}"; then
-    echo "WARNING: New latest stable version is available: ${latestStableVersion}"
-fi
+version=$(curl -L -s https://dl.k8s.io/release/stable.txt)
 
 # Download binary linux amd64 release
 curl -LO "https://dl.k8s.io/release/${version}/bin/linux/amd64/kubectl"
@@ -35,7 +29,10 @@ fi
 # Install kubectl
 install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
 
-kubectl version --client
+echo "[kubectl]" >> /install/version.txt
+kubectl version --output yaml >> /install/version.txt
+# kubectl version prints an empty line after version info
+#echo "" >> /install/version.txt
 
 # Cleanup temp folders
 rm -rf ${tempFolder}

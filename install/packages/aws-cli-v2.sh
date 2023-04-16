@@ -19,5 +19,10 @@ unzip awscliv2.zip
 # Install AWS CLI v2
 ./aws/install
 
+# Print version to version log
+echo "[AWS CLI v2]" >> /install/version.txt
+aws --version >> /install/version.txt
+echo "" >> /install/version.txt
+
 # Cleanup temp folders
 rm -rf ${tempFolder}

@@ -1,4 +1,4 @@
-image_version=2023.04
+image_version=2023.04.17
 image_name=devsecops-base
 docker_repo=msaginwm
 
@@ -11,6 +11,9 @@ deploy:
 
 run:
 	docker run --interactive --tty ${docker_repo}/${image_name}:${image_version} /bin/bash 
+
+version-info:
+	docker run ${docker_repo}/${image_name}:${image_version} cat /install/version.txt > version-info.txt
 
 packages-info:
 	docker run ${docker_repo}/${image_name}:${image_version} /bin/apt list --installed > packages-info.txt
