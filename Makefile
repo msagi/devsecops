@@ -7,7 +7,7 @@ build:
 
 deploy:
 	docker tag ${docker_repo}/${image_name}:${image_version} ${docker_repo}/${image_name}:latest
-	docker push ${docker_repo}/${image_name}:latest
+	docker push ${docker_repo}/${image_name} --all-tags
 
 run:
 	docker run --interactive --tty ${docker_repo}/${image_name}:${image_version} /bin/bash 
