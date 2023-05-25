@@ -1,4 +1,4 @@
-image_version=2023.04.17
+image_version := $(shell date "+%Y.%m.%d")
 image_name=devsecops-base
 docker_repo=msaginwm
 
@@ -18,4 +18,4 @@ version-info:
 packages-info:
 	docker run ${docker_repo}/${image_name}:${image_version} /bin/apt list --installed > packages-info.txt
 
-all: dockerbuild
+all: build
