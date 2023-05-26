@@ -5,7 +5,7 @@
 
 ### Base image: 
 ```
-Ubuntu (23.04)
+Ubuntu (23.10)
 ```
 
 ### Tools version:
@@ -14,7 +14,7 @@ Ubuntu (23.04)
 aws-cli/2.11.22 Python/3.11.3 Linux/5.15.49-linuxkit exe/x86_64.ubuntu.23 prompt/off
 
 [Docker]
-Docker version 24.0.1, build 6802122
+Docker version 24.0.2, build cb74dfc
 
 [kubectl]
 clientVersion:
@@ -33,7 +33,7 @@ kustomizeVersion: v5.0.1
 GNU Make 4.3
 
 [Python]
-Python 3.11.2
+Python 3.11.3
 ```
 
 ### Lincenses for components used in the image:
