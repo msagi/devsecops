@@ -1,17 +1,17 @@
 [AWS CLI v2]
-aws-cli/2.11.22 Python/3.11.3 Linux/5.15.49-linuxkit exe/x86_64.ubuntu.23 prompt/off
+aws-cli/2.12.6 Python/3.11.4 Linux/5.15.49-linuxkit-pr exe/x86_64.ubuntu.23 prompt/off
 
 [Docker]
 Docker version 24.0.2, build cb74dfc
 
 [kubectl]
 clientVersion:
-  buildDate: "2023-05-17T14:20:07Z"
+  buildDate: "2023-06-14T09:53:42Z"
   compiler: gc
-  gitCommit: 7f6f68fdabc4df88cfea2dcf9a19b2b830f1e647
+  gitCommit: 25b4e43193bcda6c7328a6d147b1fb73a33f1598
   gitTreeState: clean
-  gitVersion: v1.27.2
-  goVersion: go1.20.4
+  gitVersion: v1.27.3
+  goVersion: go1.20.5
   major: "1"
   minor: "27"
   platform: linux/amd64
@@ -21,5 +21,5 @@ kustomizeVersion: v5.0.1
 GNU Make 4.3
 
 [Python]
-Python 3.11.3
+Python 3.11.4
 
