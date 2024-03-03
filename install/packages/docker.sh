@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-# Uninstall old Docker versions (if any)
-#apt-get remove docker docker-engine docker.io containerd runc
+# Install latest docker packages for Ubuntu 24.04
+# credits: https://kifarunix.com/how-to-install-docker-on-ubuntu-24-04/?expand_article=1#docker-repos
 
 # create temp folder
 tempFolder=/tmp/install-docker
@@ -10,34 +10,28 @@ cd ${tempFolder}
 
 # Install dependencies
 apt-get install -y \
-    ca-certificates \
-    curl \
-    gnupg
+  apt-transport-https \
+	ca-certificates \
+	curl \
+	gnupg-agent \
+	software-properties-common
 
 # Add Docker’s official GPG key
 mkdir -m 0755 -p /etc/apt/keyrings
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmor -o /etc/apt/trusted.gpg.d/docker.gpg
 
-# Set up the repository
-versionCodeName=$(. /etc/os-release && echo "$VERSION_CODENAME")
-echo "Host version code name is '${versionCodeName}'" > ${tempFolder}/host-version-codename.log
-# Ubuntu 23.10 "mantic" version is not yet released from docker: falling back to Ubuntu 23.04 "lunar"
-if [ "${versionCodeName}" == "mantic" ]; then
-  versionCodeName=lunar
-else
-  echo "Target distro is '${versionCodeName}'" > ${tempFolder}/target-distro.log
-fi
-echo \
-  "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
-  "${versionCodeName}" stable" | \
-  tee /etc/apt/sources.list.d/docker.list > ${tempFolder}/docker.list.log
+# Note that as of this writing, Docker-CE repos is not yet available for Ubuntu 24.04 Noble Numbat. 
+# We will use Docker repos for Ubuntu 22.04 Jammy for now. However, if you want, you can install the 
+# Docker packages that ships with Ubuntu 24.04 by default, docker.io. This may not provide the latest 
+# release versions of Docker though.
+echo "deb [arch=amd64] https://download.docker.com/linux/ubuntu jammy stable" | tee /etc/apt/sources.list.d/docker-ce.list
 
 # Update the apt package index
 apt-get update
 
 # Install Docker Engine, containerd, and Docker Compose
 apt-get install -y \
-    docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+  docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
 # Verify that the installation is successful
 echo "[Docker]" >> /install/version.txt

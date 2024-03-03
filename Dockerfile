@@ -1,8 +1,11 @@
-FROM ubuntu:23.10
+FROM ubuntu:24.04
 
 WORKDIR /
 
 COPY install install/
 
-RUN /bin/bash -c /install/install-packages.sh &&\
+# Avois "debconf: unable to initialize frontend: Dialog" errors
+ARG DEBIAN_FRONTEND=noninteractive
+
+RUN /bin/bash -c /install/install-packages.sh && \
     /bin/bash -c /install/collect-licenses.sh

@@ -1,9 +1,18 @@
 image_version := $(shell date "+%Y.%m.%d")
-image_name=devsecops-base
-docker_repo=msaginwm
+image_name = devsecops-base
+docker_repo = msaginwm
+docker_options = --progress=plain
 
+prune:
+	docker image prune
+	$(eval docker_options += --no-cache)
+	
 build:
-	docker build -t ${docker_repo}/${image_name}:${image_version} .
+	docker build ${docker_options} -t ${docker_repo}/${image_name}:${image_version} .
+	docker run ${docker_repo}/${image_name}:${image_version} cat /install/version.txt > version-info.txt
+	docker run ${docker_repo}/${image_name}:${image_version} cat /install/packages.txt > packages-info.txt
+
+rebuild: prune build
 
 deploy:
 	docker tag ${docker_repo}/${image_name}:${image_version} ${docker_repo}/${image_name}:latest
@@ -11,11 +20,5 @@ deploy:
 
 run:
 	docker run --interactive --tty ${docker_repo}/${image_name}:${image_version} /bin/bash 
-
-version-info:
-	docker run ${docker_repo}/${image_name}:${image_version} cat /install/version.txt > version-info.txt
-
-packages-info:
-	docker run ${docker_repo}/${image_name}:${image_version} /bin/apt list --installed > packages-info.txt
 
 all: build

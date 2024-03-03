@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Install dependencies
-apt install -y \
+apt-get install -y \
     curl \
     unzip
 

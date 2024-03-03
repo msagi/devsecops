@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-apt install -y \
+apt-get install -y \
     make
 
 echo "[make]" >> /install/version.txt
